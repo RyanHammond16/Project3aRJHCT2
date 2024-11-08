@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data Visualization</title>
+</head>
+<body>
+    <h1>Stock Data Visualization</h1>
+
+    <form action="/" method="POST">
+        <label for="symbol">Stock Symbol (e.g. AAPL):</label>
+        <input type="text" name="symbol" id="symbol" required><br>
+
+        <label for="chart_type">Chart Type:</label>
+        <select name="chart_type" id="chart_type">
+            <option value="line">Line Chart</option>
+            <option value="bar">Bar Chart</option>
+        </select><br>
+
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" id="start_date" required><br>
+
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" id="end_date" required><br>
+
+        <button type="submit">Generate Chart</button>
+    </form>
+
+    {% if img_data %}
+        <h2>Chart for {{ symbol }}</h2>
+        <img src="data:image/png;base64,{{ img_data }}" alt="Stock Price Chart">
+    {% endif %}
+</body>
+</html>
